@@ -1,0 +1,37 @@
+﻿@model IEnumerable<SieuThi.Models.Home.MatHangListModel>
+@{
+    Layout = null;
+}
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tên Hàng</th>
+            <th scope="col">Giá Bán</th>
+            <th scope="col">Số Lượng</th>
+            <th scope="col">Đơn Vị Tính</th>
+           @* <th scope="col">Barcode</th>*@
+            <th scope="col">Bạn cần</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@Html.Raw(@item.PK_iMamathangID)</th>
+                <td>@Html.Raw(@item.sTenhang)</td>
+                <td>@Html.Raw(@item.dGiaban)</td>
+                <td>@Html.Raw(@item.iSoluong)</td>
+               @* <td>@Html.Raw(@item.sDonvitinh)</td>*@
+                <td>@Html.Raw(@item.sMavach)</td>
+                <td><a type="button" class="btn btn-group-lg bg-danger" onclick="fnBuy(@Html.Raw(@item.sTenhang))">Mua</a></td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+<script>
+    function fnBuy(name) {
+        alert("OK! Bạn vừa mua " + name +", chờ giao nhé!");
+    }
+</script>
